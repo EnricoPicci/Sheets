@@ -10,25 +10,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var angular2_1 = require('angular2/angular2');
-var SheetFactory_1 = require('../app/SheetFactory');
-var SheetCmp_1 = require('../app/SheetCmp');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = 'Sheets';
-        var factory;
-        factory = new SheetFactory_1.SheetFactory();
-        this.firstSheet = factory.getSheet('sheet1.jpg');
+var Sheet_1 = require('../app/Sheet');
+var SheetCmp = (function () {
+    function SheetCmp() {
     }
-    AppComponent = __decorate([
+    __decorate([
+        angular2_1.Input(), 
+        __metadata('design:type', Sheet_1.Sheet)
+    ], SheetCmp.prototype, "sheet");
+    SheetCmp = __decorate([
         angular2_1.Component({
-            selector: 'my-app',
+            selector: 'sheetc',
             providers: [],
-            template: "\n\t\t<h1>{{title}}</h1>\n\t\t<sheetc [sheet]=\"firstSheet\"></sheetc>\n\t\t",
-            directives: [angular2_1.FORM_DIRECTIVES, angular2_1.CORE_DIRECTIVES, SheetCmp_1.SheetCmp]
+            template: "\n    \t<div>\n\t\t\t<h1>{{sheet.title}}</h1>\n\t\t\t<h2>{{sheet.longTitle}}</h2>\n\t\t\t<image src= {{sheet.imageUrl}}></image>\n\t\t</div>\n\t\t",
+            directives: [angular2_1.FORM_DIRECTIVES, angular2_1.CORE_DIRECTIVES]
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], SheetCmp);
+    return SheetCmp;
 })();
-angular2_1.bootstrap(AppComponent, []);
-//# sourceMappingURL=app.js.map
+exports.SheetCmp = SheetCmp;
+//# sourceMappingURL=SheetCmp.js.map
