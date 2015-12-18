@@ -20,7 +20,7 @@ var SheetCmp = (function () {
     ], SheetCmp.prototype, "sheet");
     SheetCmp = __decorate([
         angular2_1.Component({
-            selector: 'sheetc',
+            selector: 'sheetCmp',
             providers: [],
             template: "\n    \t<div>\n\t\t\t<h1>{{sheet.title}}</h1>\n\t\t\t<h2>{{sheet.longTitle}}</h2>\n\t\t\t<image src= {{sheet.imageUrl}}></image>\n\t\t</div>\n\t\t",
             directives: [angular2_1.FORM_DIRECTIVES, angular2_1.CORE_DIRECTIVES]

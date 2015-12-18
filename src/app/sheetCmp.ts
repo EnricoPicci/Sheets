@@ -4,7 +4,7 @@ import {bootstrap, Component, FORM_DIRECTIVES,
 import {Sheet} from '../app/Sheet';
 
 @Component({
-    selector: 'sheetc',
+    selector: 'sheetCmp',
 	providers: [],
     template: `
     	<div>
@@ -20,9 +20,7 @@ export class SheetCmp {
 
 	constructor() {
 	}
-	
-	constructor(inSheet: Sheet) {
-		this.sheet = inSheet;
-	}
+
+
 }
 

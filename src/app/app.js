@@ -12,23 +12,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var angular2_1 = require('angular2/angular2');
 var SheetFactory_1 = require('../app/SheetFactory');
 var SheetCmp_1 = require('../app/SheetCmp');
+var CollectionOfSheetsCmp_1 = require('../app/CollectionOfSheetsCmp');
 var AppComponent = (function () {
-    function AppComponent() {
+    //collectionOfSheetsCmp: CollectionOfSheetsCmp;
+    //public collectionOfSheets: CollectionOfSheets;
+    function AppComponent(inSheetService) {
         this.title = 'Sheets';
-        var factory;
-        factory = new SheetFactory_1.SheetFactory();
-        this.firstSheet = factory.getSheet('sheet1.jpg');
+        this.sheetService = inSheetService;
+        this.firstSheet = inSheetService.getSheet('sheet1.jpg');
+        this.sheets = inSheetService.getSomeSheets(0, 4);
+        //this.collectionOfSheetsCmp = inCollectionOfSheetsCmp;
+        //this.collectionOfSheets = new CollectionOfSheets();
+        //this.collectionOfSheets.sheets = this.sheets;
     }
+    AppComponent.prototype.getSheets = function () {
+        return this.sheets;
+    };
+    AppComponent.prototype.load = function () {
+        this.sheets = this.sheetService.getSomeSheets(0, 4);
+        //this.collectionOfSheetsCmp.collectionOfSheets = this.sheets;
+        console.log(this.sheets[1].longTitle);
+    };
     AppComponent = __decorate([
         angular2_1.Component({
             selector: 'my-app',
-            providers: [],
-            template: "\n\t\t<h1>{{title}}</h1>\n\t\t<sheetc [sheet]=\"firstSheet\"></sheetc>\n\t\t",
-            directives: [angular2_1.FORM_DIRECTIVES, angular2_1.CORE_DIRECTIVES, SheetCmp_1.SheetCmp]
+            providers: [CollectionOfSheetsCmp_1.CollectionOfSheetsCmp],
+            template: "\n\t\t<h1>{{title}}</h1>\n\t\t<collection-of-sheets-cmp></collection-of-sheets-cmp>\n\t\t<!--sheetCmp [sheet]=\"firstSheet\"></sheetCmp-->\n\t\t<input type=\"button\" value=\"Load\" (click)=\"load()\">\n\t\t",
+            directives: [angular2_1.FORM_DIRECTIVES, angular2_1.CORE_DIRECTIVES, CollectionOfSheetsCmp_1.CollectionOfSheetsCmp, SheetCmp_1.SheetCmp]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [SheetFactory_1.SheetFactory])
     ], AppComponent);
     return AppComponent;
 })();
-angular2_1.bootstrap(AppComponent, []);
+//bootstrap(AppComponent, [provide(SheetFactory, {useClass: SheetFactory})]);
+angular2_1.bootstrap(AppComponent, [SheetFactory_1.SheetFactory]);
 //# sourceMappingURL=app.js.map

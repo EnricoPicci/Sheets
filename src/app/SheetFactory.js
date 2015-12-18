@@ -5,10 +5,19 @@ var SheetFactory = (function () {
     SheetFactory.prototype.getSheet = function (inId) {
         var title = inId + ' SHEET';
         var longTitle = 'I am the SHEET ' + inId;
-        var urlString = '../images/' + inId;
+        var urlString = '../images/' + inId + '.jpg';
         var sheet;
         sheet = new Sheet_1.Sheet(title, longTitle, urlString);
         return sheet;
+    };
+    SheetFactory.prototype.getSomeSheets = function (inFromPosition, inMaxNumebrOfSheets) {
+        var sheets = new Array();
+        ;
+        for (var i = 0; i < inMaxNumebrOfSheets; i++) {
+            var ii = i + 1;
+            sheets[i] = this.getSheet('sheet' + ii);
+        }
+        return sheets;
     };
     return SheetFactory;
 })();
