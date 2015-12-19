@@ -17,6 +17,31 @@ var SheetFactory1 = (function () {
         }
         return sheets;
     };
+    SheetFactory1.prototype.getGeneralSearchCriteriaDomain = function () {
+        var ret = new Array();
+        ret[0] = 'New';
+        ret[1] = 'Cool';
+        return ret;
+    };
+    ;
+    SheetFactory1.prototype.getValueBasedSearchCriteriaDomain = function () {
+        var ret = new Array();
+        ret[0] = 'Green';
+        ret[1] = 'Communist';
+        ret[2] = 'Anarchy';
+        return ret;
+    };
+    ;
+    SheetFactory1.prototype.getSectorsSearchCriteriaDomain = function () {
+        var ret = new Array();
+        ret[0] = 'Slow Food';
+        ret[1] = 'Well Being';
+        ret[2] = 'NGOs';
+        ret[3] = 'Non profit';
+        ret[4] = 'Micro-lending';
+        return ret;
+    };
+    ;
     return SheetFactory1;
 })();
 exports.SheetFactory1 = SheetFactory1;

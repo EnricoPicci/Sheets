@@ -10,7 +10,7 @@ import {SheetFactory1} from '../app/SheetFactory1';
     selector: 'collection-of-sheets-cmp',
 	providers: [],
     template: `
-    		<a *ng-for="#sheet of sheets" class="floating-box gridCard" src="#">
+    		<a *ng-for="#sheet of sheets" class="floating-box gridCard" href="#">
 	    		<div class="gridImageFrame">
 	    			<div class="gradient"></div>
 					<img height="230" width="230" src={{sheet.imageUrl}}>

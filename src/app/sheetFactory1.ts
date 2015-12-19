@@ -18,4 +18,27 @@ export class SheetFactory1 implements SheetService {
 		}
 		return sheets;
 	}
+	
+	getGeneralSearchCriteriaDomain() {
+		var ret: string[] = new Array<string>();
+		ret[0] = 'New';
+		ret[1] = 'Cool';
+		return ret;
+	};
+	getValueBasedSearchCriteriaDomain() {
+		var ret: string[] = new Array<string>();
+		ret[0] = 'Green';
+		ret[1] = 'Communist';
+		ret[2] = 'Anarchy';
+		return ret;
+	};
+	getSectorsSearchCriteriaDomain() {
+		var ret: string[] = new Array<string>();
+		ret[0] = 'Slow Food';
+		ret[1] = 'Well Being';
+		ret[2] = 'NGOs';
+		ret[3] = 'Non profit';
+		ret[4] = 'Micro-lending';
+		return ret;
+	};
 }

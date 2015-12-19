@@ -19,6 +19,33 @@ var SheetFactory = (function () {
         }
         return sheets;
     };
+    SheetFactory.prototype.getGeneralSearchCriteriaDomain = function () {
+        var ret = new Array();
+        ret[0] = 'New';
+        ret[1] = 'Popular';
+        ret[2] = 'Brands u know';
+        return ret;
+    };
+    ;
+    SheetFactory.prototype.getValueBasedSearchCriteriaDomain = function () {
+        var ret = new Array();
+        ret[0] = 'Green';
+        ret[1] = 'Social';
+        ret[2] = 'Political';
+        ret[3] = 'Current';
+        return ret;
+    };
+    ;
+    SheetFactory.prototype.getSectorsSearchCriteriaDomain = function () {
+        var ret = new Array();
+        ret[0] = 'Energy';
+        ret[1] = 'Health';
+        ret[2] = 'FS';
+        ret[3] = 'Real  Estate';
+        ret[4] = 'Retail';
+        return ret;
+    };
+    ;
     return SheetFactory;
 })();
 exports.SheetFactory = SheetFactory;

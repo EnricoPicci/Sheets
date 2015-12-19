@@ -13,6 +13,7 @@ var angular2_1 = require('angular2/angular2');
 var SheetFactory_1 = require('../app/SheetFactory');
 var SheetCmp_1 = require('../app/SheetCmp');
 var CollectionOfSheetsCmp_1 = require('../app/CollectionOfSheetsCmp');
+var SheetSearchCmp_1 = require('../app/SheetSearchCmp');
 var AppComponent = (function () {
     //collectionOfSheetsCmp: CollectionOfSheetsCmp;
     //public collectionOfSheets: CollectionOfSheets;
@@ -20,7 +21,7 @@ var AppComponent = (function () {
         this.title = 'Sheets';
         this.sheetService = inSheetService;
         this.firstSheet = inSheetService.getSheet('sheet1.jpg');
-        this.sheets = inSheetService.getSomeSheets(0, 4);
+        this.sheets = inSheetService.getSomeSheets(0, 5);
         //this.collectionOfSheetsCmp = inCollectionOfSheetsCmp;
         //this.collectionOfSheets = new CollectionOfSheets();
         //this.collectionOfSheets.sheets = this.sheets;
@@ -37,8 +38,9 @@ var AppComponent = (function () {
         angular2_1.Component({
             selector: 'my-app',
             providers: [CollectionOfSheetsCmp_1.CollectionOfSheetsCmp],
-            template: "\n\t\t<h1>{{title}}</h1>\n\t\t<collection-of-sheets-cmp [sheets]=\"sheets\"></collection-of-sheets-cmp>\n\t\t<!--sheetCmp [sheet]=\"firstSheet\"></sheetCmp-->\n\t\t<input type=\"button\" value=\"Load\" (click)=\"load()\">\n\t\t",
-            directives: [angular2_1.FORM_DIRECTIVES, angular2_1.CORE_DIRECTIVES, CollectionOfSheetsCmp_1.CollectionOfSheetsCmp, SheetCmp_1.SheetCmp]
+            templateUrl: '../src/templates/app.html',
+            styleUrls: ['../src/styles/app.css'],
+            directives: [angular2_1.FORM_DIRECTIVES, angular2_1.CORE_DIRECTIVES, CollectionOfSheetsCmp_1.CollectionOfSheetsCmp, SheetCmp_1.SheetCmp, SheetSearchCmp_1.SheetSearchCmp]
         }), 
         __metadata('design:paramtypes', [SheetFactory_1.SheetFactory])
     ], AppComponent);
