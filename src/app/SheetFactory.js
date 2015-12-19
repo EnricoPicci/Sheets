@@ -12,9 +12,9 @@ var SheetFactory = (function () {
     };
     SheetFactory.prototype.getSomeSheets = function (inFromPosition, inMaxNumebrOfSheets) {
         var sheets = new Array();
-        ;
-        for (var i = 0; i < inMaxNumebrOfSheets; i++) {
-            var ii = i + 1;
+        var ii = inFromPosition;
+        for (var i = 0; i < (inMaxNumebrOfSheets - inFromPosition); i++) {
+            ii = ii + 1;
             sheets[i] = this.getSheet('sheet' + ii);
         }
         return sheets;

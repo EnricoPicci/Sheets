@@ -29,7 +29,7 @@ var AppComponent = (function () {
         return this.sheets;
     };
     AppComponent.prototype.load = function () {
-        this.sheets = this.sheetService.getSomeSheets(0, 4);
+        this.sheets = this.sheetService.getSomeSheets(4, 7);
         //this.collectionOfSheetsCmp.collectionOfSheets = this.sheets;
         console.log(this.sheets[1].longTitle);
     };
@@ -37,7 +37,7 @@ var AppComponent = (function () {
         angular2_1.Component({
             selector: 'my-app',
             providers: [CollectionOfSheetsCmp_1.CollectionOfSheetsCmp],
-            template: "\n\t\t<h1>{{title}}</h1>\n\t\t<collection-of-sheets-cmp></collection-of-sheets-cmp>\n\t\t<!--sheetCmp [sheet]=\"firstSheet\"></sheetCmp-->\n\t\t<input type=\"button\" value=\"Load\" (click)=\"load()\">\n\t\t",
+            template: "\n\t\t<h1>{{title}}</h1>\n\t\t<collection-of-sheets-cmp [sheets]=\"sheets\"></collection-of-sheets-cmp>\n\t\t<!--sheetCmp [sheet]=\"firstSheet\"></sheetCmp-->\n\t\t<input type=\"button\" value=\"Load\" (click)=\"load()\">\n\t\t",
             directives: [angular2_1.FORM_DIRECTIVES, angular2_1.CORE_DIRECTIVES, CollectionOfSheetsCmp_1.CollectionOfSheetsCmp, SheetCmp_1.SheetCmp]
         }), 
         __metadata('design:paramtypes', [SheetFactory_1.SheetFactory])

@@ -18,12 +18,6 @@ import {SheetFactory1} from '../app/SheetFactory1';
 	                    <span class="name motifLink">{{sheet.title}}</span>
 	                    <span class="creatorName">Created By: Picci</span>
 	                </div>
-            		<!--div class="metrics">
-	                    <div class="metricLabel">One Month Return</div>
-	                    <div class="metricValue"><span class="percentageArrow large up"><span>13.8%</span></span></div>
-            		</div>
-					<p>{{sheet.title11}}</p>
-					<p>{{sheet.longTitle}}</p-->
 				</div>
 				<div class="metrics">
 	                <div class="metricLabel">One Month Return</div>
@@ -35,15 +29,13 @@ import {SheetFactory1} from '../app/SheetFactory1';
 	directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class CollectionOfSheetsCmp { 
-	//@Input() 
-	public sheets: Sheet[];
+	@Input() sheets: Sheet[];
 	sheetService: SheetService;
 
-	constructor(inSheetService: SheetFactory) {
+	/*constructor(inSheetService: SheetFactory) {
 		this.sheetService = inSheetService;
 		this.sheets = inSheetService.getSomeSheets(0, 8);
-		console.log(this.sheets[1].title)
-	}
+	}*/
 
 
 }

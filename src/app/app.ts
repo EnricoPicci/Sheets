@@ -14,7 +14,7 @@ import {CollectionOfSheetsCmp} from '../app/CollectionOfSheetsCmp';
 	providers: [CollectionOfSheetsCmp],
     template: `
 		<h1>{{title}}</h1>
-		<collection-of-sheets-cmp></collection-of-sheets-cmp>
+		<collection-of-sheets-cmp [sheets]="sheets"></collection-of-sheets-cmp>
 		<!--sheetCmp [sheet]="firstSheet"></sheetCmp-->
 		<input type="button" value="Load" (click)="load()">
 		`,
@@ -42,7 +42,7 @@ class AppComponent {
 	}
 
 	load() {
-		this.sheets = this.sheetService.getSomeSheets(0, 4)
+		this.sheets = this.sheetService.getSomeSheets(4, 7)
 		//this.collectionOfSheetsCmp.collectionOfSheets = this.sheets;
 		console.log(this.sheets[1].longTitle);
 	}

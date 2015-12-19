@@ -12,9 +12,10 @@ export class SheetFactory implements SheetService {
 	}
 
 	getSomeSheets(inFromPosition: number, inMaxNumebrOfSheets: number) {
-		var sheets: Sheet[] = new Array<Sheet>();;
-		for (var i = 0; i < inMaxNumebrOfSheets; i++) {
-			var ii = i+1;
+		var sheets: Sheet[] = new Array<Sheet>();
+		var ii = inFromPosition;
+		for (var i = 0; i < (inMaxNumebrOfSheets - inFromPosition); i++) {
+			ii = ii+1;
 			sheets[i] = this.getSheet('sheet' + ii);
 		}
 		return sheets;
