@@ -17,6 +17,10 @@ var SheetFactory1 = (function () {
         }
         return sheets;
     };
+    SheetFactory1.prototype.fetchSheets = function (searchString, generalTags, valueBasedTags, sectorsTags) {
+        var ret = new Array();
+        return ret;
+    };
     SheetFactory1.prototype.getGeneralSearchCriteriaDomain = function () {
         var ret = new Array();
         ret[0] = 'New';

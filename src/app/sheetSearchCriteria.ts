@@ -1,11 +1,13 @@
 import {SheetService} from '../app/SheetService';
 import {SheetFactory} from '../app/SheetFactory';
+import {SearchSelection} from '../app/SearchSelection';
+
 
 export class SheetSearchCriteria { 
 	public freeSearchText: string;
-	public general: string[];
-	public valueBased: string[];
-	public sectors: string[];
+	public general: SearchSelection[];
+	public valueBased: SearchSelection[];
+	public sectors: SearchSelection[];
 	
 	static generalDomain: string[];
 	static valueBasedDomain: string[];
@@ -21,21 +23,41 @@ export class SheetSearchCriteria {
 		if (SheetSearchCriteria.generalDomain == null) {
 			SheetSearchCriteria.generalDomain = this.sheetService.getGeneralSearchCriteriaDomain();
 		}
-		return SheetSearchCriteria.generalDomain;
+		if (this.general == null) {
+			this.general = new Array<SearchSelection>();
+			for (var i = 0; i < SheetSearchCriteria.generalDomain.length; i++) {
+				this.general[i] = new SearchSelection(SheetSearchCriteria.generalDomain[i]);
+			}
+		}
+		return this.general;
 	}
 	
 	public getValueBasedDomain() {
 		if (SheetSearchCriteria.valueBasedDomain == null) {
 			SheetSearchCriteria.valueBasedDomain = this.sheetService.getValueBasedSearchCriteriaDomain();
 		}
-		return SheetSearchCriteria.valueBasedDomain;
+		if (this.valueBased == null) {
+			this.valueBased = new Array<SearchSelection>();
+			for (var i = 0; i < SheetSearchCriteria.valueBasedDomain.length; i++) {
+				this.valueBased[i] = new SearchSelection(SheetSearchCriteria.valueBasedDomain[i]);
+				//console.log(this.valueBased[i]);
+			}
+		}
+		return this.valueBased;
 	}
 	
 	public getSectorsDomain() {
 		if (SheetSearchCriteria.sectorsDomain == null) {
 			SheetSearchCriteria.sectorsDomain = this.sheetService.getSectorsSearchCriteriaDomain();
 		}
-		return SheetSearchCriteria.sectorsDomain;
+		if (this.sectors == null) {
+			this.sectors = new Array<SearchSelection>();
+			for (var i = 0; i < SheetSearchCriteria.sectorsDomain.length; i++) {
+				this.sectors[i] = new SearchSelection(SheetSearchCriteria.sectorsDomain[i]);
+				//console.log(this.sectors[i]);
+			}
+		}
+		return this.sectors;
 	}
 
 }

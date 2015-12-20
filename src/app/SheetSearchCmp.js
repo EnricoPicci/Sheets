@@ -14,13 +14,46 @@ var SheetSearchCriteria_1 = require('../app/SheetSearchCriteria');
 var SheetFactory_1 = require('../app/SheetFactory');
 var SheetSearchCmp = (function () {
     function SheetSearchCmp(inSheetService) {
+        this.sheetsRetrieved = new angular2_1.EventEmitter();
         this.sheetSearchCriteria = new SheetSearchCriteria_1.SheetSearchCriteria(inSheetService);
     }
+    SheetSearchCmp.prototype.onChange = function (selected, selection) {
+        selection.selected = selected;
+        var criteria;
+        criteria = this.sheetSearchCriteria.getGeneralDomain();
+        var generalTags = new Array();
+        this.retrieveSelectedCriteria(criteria, generalTags);
+        criteria = this.sheetSearchCriteria.getValueBasedDomain();
+        var valueBasedTags = new Array();
+        this.retrieveSelectedCriteria(criteria, valueBasedTags);
+        criteria = this.sheetSearchCriteria.getSectorsDomain();
+        var sectorsTags = new Array();
+        this.retrieveSelectedCriteria(criteria, sectorsTags);
+        var fact = new SheetFactory_1.SheetFactory();
+        this.searchResult = fact.fetchSheets(null, generalTags, valueBasedTags, sectorsTags);
+        console.log('change1');
+        console.log(this.searchResult + 'cc');
+        this.sheetsRetrieved.next(this.searchResult);
+    };
+    SheetSearchCmp.prototype.retrieveSelectedCriteria = function (inCriteria, inTags) {
+        for (var i = 0; i < inCriteria.length; i++) {
+            if (inCriteria[i].selected) {
+                inTags[i] = inCriteria[i].name;
+            }
+        }
+    };
+    SheetSearchCmp.prototype.onClick = function () {
+        console.log('click');
+    };
+    __decorate([
+        angular2_1.Output(), 
+        __metadata('design:type', angular2_1.EventEmitter)
+    ], SheetSearchCmp.prototype, "sheetsRetrieved");
     SheetSearchCmp = __decorate([
         angular2_1.Component({
             selector: 'sheetSearchCmp',
             providers: [],
-            template: "\n    \t<div id=\"freeSearchHeader\">\n\t\t\t<h3>Search</h3>\n\t\t</div>\n\t\t<div id=\"freeSearchBody\">\n\t\t\t<input type=\"text\" name=\"query\" id=\"query\" placeholder=\"Company, ticker, or keyword\" autocomplete=\"off\">\n            <a id=\"querySubmit\"></a>\n\t\t</div>\n\t\t<div id=\"narrowResultHeader\">\n\t\t\t<h3>Refine Selection</h3>\n\t\t\t<div id=\"general\">\n\t\t\t\t<div class=\"sectionHeader\">General</div>\n\t\t\t\t<div class=\"sectionBody\">\n\t\t\t\t\t<ul *ng-for=\"#criterium of sheetSearchCriteria.getGeneralDomain()\">\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<input value={{criterium}} type=\"checkbox\">\n\t\t\t\t\t\t\t<label for=\"featured\">{{criterium}}</label>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t</ul>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div id=\"valueBased\">\n\t\t\t\t<div class=\"sectionHeader\">Value based</div>\n\t\t\t\t<div class=\"sectionBody\">\n\t\t\t\t\t<ul *ng-for=\"#criterium of sheetSearchCriteria.getValueBasedDomain()\">\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<input value={{criterium}} type=\"checkbox\">\n\t\t\t\t\t\t\t<label for=\"featured\">{{criterium}}</label>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t</ul>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div id=\"sectors\">\n\t\t\t\t<div class=\"sectionHeader\">Sectors</div>\n\t\t\t\t<div class=\"sectionBody\">\n\t\t\t\t\t<ul *ng-for=\"#criterium of sheetSearchCriteria.getSectorsDomain()\">\n\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t<input value={{criterium}} type=\"checkbox\">\n\t\t\t\t\t\t\t<label for=\"featured\">{{criterium}}</label>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t</ul>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t",
+            templateUrl: '../src/templates/sheetSearch.html',
             styleUrls: ['../src/styles/sheetSearch.css'],
             directives: [angular2_1.FORM_DIRECTIVES, angular2_1.CORE_DIRECTIVES]
         }), 

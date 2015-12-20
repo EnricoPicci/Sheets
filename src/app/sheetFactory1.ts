@@ -18,6 +18,11 @@ export class SheetFactory1 implements SheetService {
 		}
 		return sheets;
 	}
+
+	fetchSheets(searchString: string, generalTags: string[], valueBasedTags: string[], sectorsTags: string[]) {
+		var ret: Array<Sheet> = new Array<Sheet>();
+		return ret;
+	}
 	
 	getGeneralSearchCriteriaDomain() {
 		var ret: string[] = new Array<string>();

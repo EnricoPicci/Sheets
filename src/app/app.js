@@ -15,24 +15,22 @@ var SheetCmp_1 = require('../app/SheetCmp');
 var CollectionOfSheetsCmp_1 = require('../app/CollectionOfSheetsCmp');
 var SheetSearchCmp_1 = require('../app/SheetSearchCmp');
 var AppComponent = (function () {
-    //collectionOfSheetsCmp: CollectionOfSheetsCmp;
-    //public collectionOfSheets: CollectionOfSheets;
     function AppComponent(inSheetService) {
         this.title = 'Sheets';
         this.sheetService = inSheetService;
         this.firstSheet = inSheetService.getSheet('sheet1.jpg');
         this.sheets = inSheetService.getSomeSheets(0, 5);
-        //this.collectionOfSheetsCmp = inCollectionOfSheetsCmp;
-        //this.collectionOfSheets = new CollectionOfSheets();
-        //this.collectionOfSheets.sheets = this.sheets;
     }
     AppComponent.prototype.getSheets = function () {
         return this.sheets;
     };
     AppComponent.prototype.load = function () {
         this.sheets = this.sheetService.getSomeSheets(4, 7);
-        //this.collectionOfSheetsCmp.collectionOfSheets = this.sheets;
         console.log(this.sheets[1].longTitle);
+    };
+    AppComponent.prototype.updateSheets = function (searchResult) {
+        console.log(searchResult);
+        this.sheets = searchResult;
     };
     AppComponent = __decorate([
         angular2_1.Component({

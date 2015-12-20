@@ -17,8 +17,45 @@ export class SheetFactory implements SheetService {
 		for (var i = 0; i < (inMaxNumebrOfSheets - inFromPosition); i++) {
 			ii = ii+1;
 			sheets[i] = this.getSheet('sheet' + ii);
+			sheets[i].general = 'New';
+			sheets[i].valueBased = 'Social';
+			sheets[i].sector = 'Retail';
 		}
 		return sheets;
+	}
+
+	fetchSheets(searchString: string, generalTags: string[], valueBasedTags: string[], sectorsTags: string[]) {
+		var ret: Array<Sheet> = new Array<Sheet>();
+		var sheets: Sheet[] = this.getSomeSheets(0, 8);
+		var tempArr : { [key:string]:Sheet; } = { };
+		for (var i= 0; i < sheets.length; i++) {
+			for (var j= 0; j < generalTags.length; j++) {
+				if (sheets[i].general === generalTags[j]) {
+					tempArr[sheets[i].title] = sheets[i];
+				}
+			}
+		}
+		for (var i= 0; i < sheets.length; i++) {
+			for (var j= 0; j < valueBasedTags.length; j++) {
+				if (sheets[i].valueBased === valueBasedTags[j]) {
+					tempArr[sheets[i].title] = sheets[i];
+				}
+			}
+		}
+		for (var i= 0; i < sheets.length; i++) {
+			for (var j= 0; j < sectorsTags.length; j++) {
+				if (sheets[i].sector === sectorsTags[j]) {
+					tempArr[sheets[i].title] = sheets[i];
+				}
+			}
+		}
+		var i: number = 0;
+		for (var key in tempArr) {
+			console.log(tempArr[key]);
+			ret[i] = tempArr[key];
+			i++;
+		}
+		return ret;
 	}
 
 	getGeneralSearchCriteriaDomain() {

@@ -4,6 +4,11 @@ export class Sheet {
 	public imageUrl: string;
 	public description: string;
 
+	// tags used as filter in search
+	public general: string;
+	public valueBased: string;
+	public sector: string;
+
 	public constructor(inTitle: string, inLongTitle: string, inImageUrl: string) {
 		this.title = inTitle;
 		this.longTitle = inLongTitle;

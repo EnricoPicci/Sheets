@@ -7,4 +7,7 @@ export interface SheetService {
 	getGeneralSearchCriteriaDomain() : string[];
 	getValueBasedSearchCriteriaDomain() : string[];
 	getSectorsSearchCriteriaDomain() : string[];
+	
+	fetchSheets(searchString: string, generalTags: string[], valueBasedTags: string[], sectorsTags: string[]) : Array<Sheet>;
+	
 }

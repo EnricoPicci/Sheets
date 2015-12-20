@@ -22,16 +22,11 @@ class AppComponent {
 	public firstSheet: Sheet;
 	public sheets: Sheet[];
 	sheetService: SheetService;
-	//collectionOfSheetsCmp: CollectionOfSheetsCmp;
-	//public collectionOfSheets: CollectionOfSheets;
 
 	constructor(inSheetService: SheetFactory) {
 		this.sheetService = inSheetService;
 		this.firstSheet = inSheetService.getSheet('sheet1.jpg');
 		this.sheets = inSheetService.getSomeSheets(0, 5);
-		//this.collectionOfSheetsCmp = inCollectionOfSheetsCmp;
-		//this.collectionOfSheets = new CollectionOfSheets();
-		//this.collectionOfSheets.sheets = this.sheets;
 	}
 
 	getSheets() {
@@ -40,8 +35,12 @@ class AppComponent {
 
 	load() {
 		this.sheets = this.sheetService.getSomeSheets(4, 7)
-		//this.collectionOfSheetsCmp.collectionOfSheets = this.sheets;
 		console.log(this.sheets[1].longTitle);
+	}
+
+	updateSheets(searchResult: Sheet[]) {
+		console.log(searchResult);
+		this.sheets = searchResult;
 	}
 }
 

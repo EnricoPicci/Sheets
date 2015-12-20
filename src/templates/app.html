@@ -1,7 +1,7 @@
 		<div id="content" class="container">
 			<div id="pageHeading"></div>
 			<div id="sidebarGroup">
-				<sheetSearchCmp></sheetSearchCmp>
+				<sheetSearchCmp #search (sheets-retrieved)="updateSheets(search.searchResult)"></sheetSearchCmp>
 			</div>
 			<div id="main">
 				<collection-of-sheets-cmp [sheets]="sheets"></collection-of-sheets-cmp>
