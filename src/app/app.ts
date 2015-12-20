@@ -26,7 +26,7 @@ class AppComponent {
 	constructor(inSheetService: SheetFactory) {
 		this.sheetService = inSheetService;
 		this.firstSheet = inSheetService.getSheet('sheet1.jpg');
-		this.sheets = inSheetService.getSomeSheets(0, 5);
+		this.sheets = inSheetService.getSomeSheets(0, 16);
 	}
 
 	getSheets() {
@@ -45,5 +45,5 @@ class AppComponent {
 }
 
 
-//bootstrap(AppComponent, [provide(SheetFactory, {useClass: SheetFactory})]);
-bootstrap(AppComponent, [SheetFactory]);
+bootstrap(AppComponent, [provide(SheetFactory, {useClass: SheetFactory})]);
+//bootstrap(AppComponent, [SheetFactory]);

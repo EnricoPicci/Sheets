@@ -9,22 +9,7 @@ import {SheetFactory1} from '../app/SheetFactory1';
 @Component({
     selector: 'collection-of-sheets-cmp',
 	providers: [],
-    template: `
-    		<a *ng-for="#sheet of sheets" class="floating-box gridCard" href="#">
-	    		<div class="gridImageFrame">
-	    			<div class="gradient"></div>
-					<img height="230" width="230" src={{sheet.imageUrl}}>
-					<div class="imageOverlay motifName">
-	                    <span class="name motifLink">{{sheet.title}}</span>
-	                    <span class="creatorName">Created By: Picci</span>
-	                </div>
-				</div>
-				<div class="metrics">
-	                <div class="metricLabel">One Month Return</div>
-	                <div class="metricValue"><span class="percentageArrow large up"><span>13.8%</span></span></div>
-            	</div>
-    		</a>
-		`,
+    templateUrl: '../src/templates/collectionOfSheets.html',
 	styleUrls: ['../src/styles/table.css'],
 	directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })

@@ -7,7 +7,7 @@ export class SheetFactory1 implements SheetService {
 		var longTitle = 'I am the SHEET1 ' + inId;
 		var urlString = '../images/' + inId;
 		var sheet: Sheet;
-		sheet = new Sheet(title, longTitle, urlString);
+		sheet = new Sheet(title, longTitle, urlString, '1');
 		return sheet;
 	}
 

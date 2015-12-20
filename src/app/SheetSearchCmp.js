@@ -23,16 +23,20 @@ var SheetSearchCmp = (function () {
         criteria = this.sheetSearchCriteria.getGeneralDomain();
         var generalTags = new Array();
         this.retrieveSelectedCriteria(criteria, generalTags);
+        console.log('generalTags');
+        console.log(generalTags);
         criteria = this.sheetSearchCriteria.getValueBasedDomain();
         var valueBasedTags = new Array();
         this.retrieveSelectedCriteria(criteria, valueBasedTags);
+        console.log('valueBasedTags');
+        console.log(valueBasedTags);
         criteria = this.sheetSearchCriteria.getSectorsDomain();
         var sectorsTags = new Array();
         this.retrieveSelectedCriteria(criteria, sectorsTags);
+        console.log('sectorsTags');
+        console.log(sectorsTags);
         var fact = new SheetFactory_1.SheetFactory();
         this.searchResult = fact.fetchSheets(null, generalTags, valueBasedTags, sectorsTags);
-        console.log('change1');
-        console.log(this.searchResult + 'cc');
         this.sheetsRetrieved.next(this.searchResult);
     };
     SheetSearchCmp.prototype.retrieveSelectedCriteria = function (inCriteria, inTags) {

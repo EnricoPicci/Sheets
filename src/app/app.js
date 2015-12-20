@@ -19,7 +19,7 @@ var AppComponent = (function () {
         this.title = 'Sheets';
         this.sheetService = inSheetService;
         this.firstSheet = inSheetService.getSheet('sheet1.jpg');
-        this.sheets = inSheetService.getSomeSheets(0, 5);
+        this.sheets = inSheetService.getSomeSheets(0, 16);
     }
     AppComponent.prototype.getSheets = function () {
         return this.sheets;
@@ -44,6 +44,6 @@ var AppComponent = (function () {
     ], AppComponent);
     return AppComponent;
 })();
-//bootstrap(AppComponent, [provide(SheetFactory, {useClass: SheetFactory})]);
-angular2_1.bootstrap(AppComponent, [SheetFactory_1.SheetFactory]);
+angular2_1.bootstrap(AppComponent, [angular2_1.provide(SheetFactory_1.SheetFactory, { useClass: SheetFactory_1.SheetFactory })]);
+//bootstrap(AppComponent, [SheetFactory]); 
 //# sourceMappingURL=app.js.map

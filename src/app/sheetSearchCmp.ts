@@ -26,22 +26,27 @@ export class SheetSearchCmp {
 	onChange(selected: boolean, selection: SearchSelection) {
 		selection.selected = selected;
 		var criteria: SearchSelection[];
+		
 		criteria = this.sheetSearchCriteria.getGeneralDomain();
 		var generalTags: string[] = new Array<string>();
 		this.retrieveSelectedCriteria(criteria, generalTags);
+		console.log('generalTags');
+		console.log(generalTags);
 
 		criteria = this.sheetSearchCriteria.getValueBasedDomain();
 		var valueBasedTags: string[] = new Array<string>();
 		this.retrieveSelectedCriteria(criteria, valueBasedTags);
+		console.log('valueBasedTags');
+		console.log(valueBasedTags);
 		
 		criteria = this.sheetSearchCriteria.getSectorsDomain();
 		var sectorsTags: string[] = new Array<string>();
 		this.retrieveSelectedCriteria(criteria, sectorsTags);
+		console.log('sectorsTags');
+		console.log(sectorsTags);
 		
 		var fact: SheetFactory = new SheetFactory();
 		this.searchResult = fact.fetchSheets(null, generalTags, valueBasedTags, sectorsTags);
-		console.log('change1');
-		console.log(this.searchResult + 'cc');
 		this.sheetsRetrieved.next(this.searchResult);
 	}
 	

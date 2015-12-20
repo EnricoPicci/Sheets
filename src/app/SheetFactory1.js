@@ -7,7 +7,7 @@ var SheetFactory1 = (function () {
         var longTitle = 'I am the SHEET1 ' + inId;
         var urlString = '../images/' + inId;
         var sheet;
-        sheet = new Sheet_1.Sheet(title, longTitle, urlString);
+        sheet = new Sheet_1.Sheet(title, longTitle, urlString, '1');
         return sheet;
     };
     SheetFactory1.prototype.getSomeSheets = function (inFromPosition, inMaxNumebrOfSheets) {
